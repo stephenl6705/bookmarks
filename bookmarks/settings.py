@@ -41,6 +41,7 @@ INSTALLED_APPS = (
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'social.apps.django_app.default',
+    'images',
 )
 
 MIDDLEWARE_CLASSES = (
@@ -123,4 +124,17 @@ MEDIA_ROOT = os.path.join(BASE_DIR, 'media/')
 AUTHENTICATION_BACKENDS = (
     'django.contrib.auth.backends.ModelBackend',
     'account.authentication.EmailAuthBackend',
+    'social.backends.facebook.FacebookOAuth2',
+    'social.backends.google.GoogleOAuth2',
+    'social.backends.twitter.TwitterOAuth',
     )
+
+SOCIAL_AUTH_FACEBOOK_KEY = '1804665826421499'
+SOCIAL_AUTH_FACEBOOK_SECRET = 'bfa65f33748cc3e830f2e2d79d392265'
+SOCIAL_AUTH_FACEBOOK_SCOPE = ['email']
+
+SOCIAL_AUTH_GOOGLE_OAUTH2_KEY = '883542249430-2pm6jk8193tkn9tdfuebrarrddjiltk8.apps.googleusercontent.com'
+SOCIAL_AUTH_GOOGLE_OAUTH2_SECRET = 'JZfyzKH85HzkOMDJHU2oyBri'
+
+SOCIAL_AUTH_TWITTER_KEY = 'JW9Ju5K4er0gCHeUty7D5cz5V'
+SOCIAL_AUTH_TWITTER_SECRET = 'jYxtqFDhRZHfcZ1CYVXVsf0OAVAKACfVuKjTDQv6Hb8fXv5iGy'
