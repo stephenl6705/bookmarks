@@ -139,3 +139,7 @@ SOCIAL_AUTH_GOOGLE_OAUTH2_SECRET = 'JZfyzKH85HzkOMDJHU2oyBri'
 
 SOCIAL_AUTH_TWITTER_KEY = 'JW9Ju5K4er0gCHeUty7D5cz5V'
 SOCIAL_AUTH_TWITTER_SECRET = 'jYxtqFDhRZHfcZ1CYVXVsf0OAVAKACfVuKjTDQv6Hb8fXv5iGy'
+
+ABSOLUTE_URL_OVERRIDES = {
+    'auth.user': lambda u: reverse_lazy('user_detail', args=[u.username])
+}
