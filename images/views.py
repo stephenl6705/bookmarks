@@ -1,3 +1,4 @@
+from actions.utils import create_action
 from django.http import HttpResponse
 from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
 from common.decorators import ajax_required
@@ -22,6 +23,7 @@ def image_create(request):
             # assign current user to the item
             new_item.user = request.user
             new_item.save()
+            create_action(request.user, 'bookmarked image', new_item)
             messages.success(request, 'Image added successfully')
 
             # redirect to the new created item detail view
@@ -50,6 +52,7 @@ def image_like(request):
             image = Image.objects.get(id=image_id)
             if action == 'like':
                 image.users_like.add(request.user)
+                create_action(request.user, 'likes', image)
             else:
                 image.users_like.remove(request.user)
             return JsonResponse({'status': 'ok'})
