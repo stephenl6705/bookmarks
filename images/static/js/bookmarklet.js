@@ -19,17 +19,17 @@
     box_html = '<div id="bookmarklet"><a href="#" id="close">&times;</a><h1>Select an image to bookmark:</h1><div class="images"></div></div>';
     jQuery('body').append(box_html);
 
-    // close event
-    jQuery('#bookmarklet #close').click(function(){
-       jQuery('#bookmarklet').remove();
-    });
+	  // close event
+	  jQuery('#bookmarklet #close').click(function(){
+      jQuery('#bookmarklet').remove();
+	  });
 
     // find images and display them
     jQuery.each(jQuery('img[src$="jpg"]'), function(index, image) {
       if (jQuery(image).width() >= min_width && jQuery(image).height() >= min_height)
       {
         image_url = jQuery(image).attr('src');
-        jQuery('#bookmarklet .images').append('<a href="#"><img src="'+ image_url +'" /></a>'); 
+        jQuery('#bookmarklet .images').append('<a href="#"><img src="'+ image_url +'" /></a>');
       }
     });
 
@@ -41,12 +41,11 @@
       // open new window to submit the image
       window.open(site_url +'images/create/?url='
                   + encodeURIComponent(selected_image)
-                  + '&title='
-                  + encodeURIComponent(jQuery('title').text()),
+                  + '&title=' + encodeURIComponent(jQuery('title').text()),
                   '_blank');
     });
-  };
 
+  };
   // Check if jQuery is loaded
   if(typeof window.jQuery != 'undefined') {
     bookmarklet();
@@ -55,9 +54,7 @@
     var conflict = typeof window.$ != 'undefined';
     // Create the script and point to Google API
     var script = document.createElement('script');
-    script.setAttribute('src',
-      'http://ajax.googleapis.com/ajax/libs/jquery/' +
-      jquery_version + '/jquery.min.js');
+    script.setAttribute('src','http://ajax.googleapis.com/ajax/libs/jquery/' + jquery_version + '/jquery.min.js');
     // Add the script to the 'head' for processing
     document.getElementsByTagName('head')[0].appendChild(script);
     // Create a way to wait until script loading
@@ -77,4 +74,5 @@
       }
     })();
   }
+
 })()
